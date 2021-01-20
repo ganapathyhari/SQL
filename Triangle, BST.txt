@@ -1,0 +1,76 @@
+SELECT 
+    CASE
+	WHEN A+B > C AND B+C > A AND A+C >B THEN
+	CASE
+	    WHEN A=B AND B=C THEN 'Equilateral'
+	    WHEN A=B OR B=C OR C=A THEN 'Isosceles'
+	ELSE 'Scelene'
+     ELSE 'NOT A TRIANGLE'
+	END 'TYPE OF TRIANLGE
+FROM TRIANGLES
+
+
+SELECT
+    CASE 
+     WHEN OCCUPATION LIKE 'Doctor' THEN NAME+'(D)'
+     WHEN OCCUPATION LIKE 'Actor' THEN NAME+'(A)'
+     WHEN OCCUPATION LIKE 'Singer' THEN NAME+'(S)'
+     WHEN OCCUPATION LIKE 'Professor' THEN NAME+'(P)'
+    END
+FROM OCCUPATIONS
+
+
+
+
+
+
+
+SELECT 
+concat(NAME, 
+CASE 
+WHEN occupation = "Doctor" THEN "(D)" 
+WHEN occupation = "Professor" THEN "(P)" 
+WHEN occupation = "Singer" THEN "(S)" 
+WHEN occupation = "Actor" THEN "(A)" END )
+FROM OCCUPATIONS ORDER BY NAME; 
+
+SELECT 
+"There are total", 
+COUNT(OCCUPATION), 
+concat(LOWER(OCCUPATION),"s") 
+FROM OCCUPATIONS 
+GROUP BY OCCUPATION 
+ORDER BY COUNT(OCCUPATION) ASC, OCCUPATION ASC;
+
+
+SELECT 
+	CONCAT(N, 
+CASE	
+	WHEN N in (SELECT P FROM BST) THEN 'Inner'
+	WHEN P IS NULL THEN 'Root'
+	
+ELSE 'Leaf'
+)
+FROM BST	
+
+
+DECLARE @i INT = 5
+WHILE (@i > 0)
+    BEGIN 
+        PRINT REPLICATE('*',@i)
+        SET @i = @i - 1;
+    END
+
+
+DECLARE @I INT = 0;
+WHILE @I < 10
+BEGIN
+	IF @I%2 = 0
+		PRINT CAST (@I AS char(1))+ '  IS AN EVEN NUMBER'
+	ELSE 
+		PRINT CAST (@I AS char(1))+ '  IS AN ODD NUMBER'
+	SET @I += 1;
+END 
+
+
+
